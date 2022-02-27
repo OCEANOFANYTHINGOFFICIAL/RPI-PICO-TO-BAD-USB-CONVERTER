@@ -9,7 +9,6 @@
 <div align="center">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER?style=plastic">
   <img alt="GitHub Repo Version" src="https://img.shields.io/badge/Version-1.0.0.0-brightgreen?style=plastic">
-  <img alt="GitHub license" src="https://img.shields.io/github/license/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER?style=plastic">
   <img alt="Creator" src="https://img.shields.io/badge/Creator-OCEAN%20OF%20ANYTHING-chocolate?style=plastic">
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER?style=plastic">
 </div>
