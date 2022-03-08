@@ -13,7 +13,8 @@ from adafruit_hid.keycode import Keycode
 import time
 import digitalio
 from board import *
-led = digitalio.DigitalInOut(LED)
+import board
+led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
 duckyCommands = {
@@ -191,3 +192,5 @@ if(progStatus == False):
     print("Done")
 else:
     print("Update your payload")
+while True:
+    led.value = True
