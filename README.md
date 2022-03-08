@@ -1,3 +1,4 @@
+
 <h1 align="center">Raspberry Pi Pico To Bad USB Converter</h1>
 
 <div align="center">
@@ -40,6 +41,29 @@ Remove the jumper and reconnect to your PC to reprogram.
 The default mode is USB mass storage enabled.   
 
 ![USB enable/disable mode](images/usb-boot-mode.png)
+
+### Usage
+
+There Is A File Named `payload.dd` In Your `Raspberry Pi Pico ` After Configuring That Into Bad USB. You Can Edit That File And Write Your Payload Script Code In That. You Also Dont Need To Compile Or Encode To Use The Original Code. You Can Actually Run That Directly !
+
+> ProTip!
+> 
+> You Can Run Different Payloads By Configuring One Time !
+
+It Means You Can Save Multiple Payload Files And Can Run That. You Can't Run Different Payloads Or All Payloads At One Time. Please Read The Limitations
+#### limitations To Run Multiple Payloads
+
+ - You Can Save Four Different Payloads 
+ - Only Four Different Payloads
+ - Can Run One At A Time
+ - Can't Run Multiple Payloads At One Time
+ - You Can Use Buttons Or Jumper Wire To Run Those Different Payloads
+ - Default Is `payload.dd` And You Can Add `payload2.dd`, `payload3.dd`, `payload4.dd`
+ - You Have To Connect Buttons in Following Steps,-
+> - payload2 = GPIO5 to GND
+>  - payload3 = GPIO10 to GND
+>  - payload4 = GPIO11 to GND
+- To Run Each Script, Press And Hold The Payload's Coresponding Button And Then Insert The `Bad USB` Into Victim's PC
 
 ### Changing Keyboard Layouts
 
