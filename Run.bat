@@ -56,8 +56,11 @@ echo [#] Done!
 echo [+] Installing Payload Converter Firmware And Runtimes...
 copy "code.py" "%rpi_dir_url%\code.py" >nul
 echo [#] Done!
-echo [+] Installing Payload File...
+echo [+] Installing Payloads...
 copy "payload.dd" "%rpi_dir_url%\payload.dd" >nul
+copy "payload2.dd" "%rpi_dir_url%\payload2.dd" >nul
+copy "payload3.dd" "%rpi_dir_url%\payload3.dd" >nul
+copy "payload4.dd" "%rpi_dir_url%\payload4.dd" >nul
 echo [#] Done!
 cls
 echo.
