@@ -1,21 +1,26 @@
+import board
+import displayio
+import terminalio
+import microcontroller
+import busio
+import time
+import digitalio
+from board import *
+import board
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
-
 # comment out these lines for non_US keyboards
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
 from adafruit_hid.keycode import Keycode
-
 # uncomment these lines for non_US keyboards
 # replace LANG with appropriate language
 #from keyboard_layout_win_LANG import KeyboardLayout
 #from keycode_win_LANG import Keycode
 
-import time
-import digitalio
-from board import *
-import board
+
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
+
 
 duckyCommands = {
     'WINDOWS': Keycode.WINDOWS, 'GUI': Keycode.GUI,
@@ -100,14 +105,6 @@ def parseLine(line):
         newScriptLine = convertLine(line)
         runScriptLine(newScriptLine)
 
-
-kbd = Keyboard(usb_hid.devices)
-layout = KeyboardLayout(kbd)
-
-# sleep at the start to allow the device to be recognized by the host computer
-time.sleep(.5)
-
-
 def getProgrammingStatus():
     # check GP0 for setup mode
     # see setup mode for instructions
@@ -115,9 +112,6 @@ def getProgrammingStatus():
     progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     progStatus = not progStatusPin.value
     return(progStatus)
-
-
-defaultDelay = 0
 
 
 def runScript(file):
@@ -179,7 +173,44 @@ def selectPayload():
 
     return payload
 
+def getCpuTemp():
+    return (microcontroller.cpu.temperature  * (9/5) + 32) - 0.25
 
+kbd = Keyboard(usb_hid.devices)
+layout = KeyboardLayout(kbd)
+# sleep at the start to allow the device to be recognized by the host computer
+time.sleep(.5)
+defaultDelay = 0
+
+led.value = True
+try:
+    from adafruit_display_text import label
+    import adafruit_displayio_ssd1306
+    displayio.release_displays()
+    i2c = busio.I2C (scl=board.GP21, sda=board.GP20)
+    display_bus = displayio.I2CDisplay(i2c, device_address=0x3C)
+    display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=128, height=64)
+
+    text_group = displayio.Group()
+    text = 'USB Rubber Ducky\nBy OCEAN OF ANYTHING\n\nExecuting Payload.'
+    text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=5, y=5)
+    text_group.append(text_area)
+    display.show(text_group)
+    time.sleep(1)
+    text = 'USB Rubber Ducky\nBy OCEAN OF ANYTHING\n\nExecuting Payload..'
+    text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=5, y=5)
+    text_group.append(text_area)
+    display.show(text_group)
+    time.sleep(1)
+    text = 'USB Rubber Ducky\nBy OCEAN OF ANYTHING\n\nExecuting Payload...'
+    text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=5, y=5)
+    text_group.append(text_area)
+    display.show(text_group)
+    time.sleep(2)
+except Exception as e:
+    print(f"Error: {e}")
+
+startTime = time.time()
 progStatus = False
 progStatus = getProgrammingStatus()
 
@@ -192,6 +223,43 @@ if(progStatus == False):
     print("Done")
 else:
     print("Update your payload")
+
+
+
+
+
 while True:
+    try:
+        # Make the display context
+        text_group = displayio.Group()
+        # Draw a label
+        text = '- USB Rubber Ducky -'
+        text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=5, y=5)
+        text_group.append(text_area)
+        text = "CPU Temp: {:.2f} °F".format(getCpuTemp())
+        text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=0, y=18)
+        text_group.append(text_area)
+        text = "Payload: {}".format(payload)
+        text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=0, y=31)
+        text_group.append(text_area)
+        endTime = time.time()
+        temp = endTime - startTime
+        hours = (temp//3600)
+        temp = (temp - 3600*hours)
+        minutes = (temp//60)
+        seconds = (temp - 60*minutes)
+        newhours = str(hours)
+        newminuites = str(minutes)
+        newseconds = str(seconds)
+        spentTime = newhours+':'+newminuites+':'+newseconds
+        text = "Time Spend: {}".format(spentTime)
+        text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=0, y=44)
+        text_group.append(text_area)
+        text = "By OCEAN OF ANYTHING"
+        text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=0, y=57)
+        text_group.append(text_area)
+        display.show(text_group)
+    except Exception as e:
+        print(f"Error: {e}")
     led.value = not led.value
-    time.sleep(0.3)
+    time.sleep(0.1)
