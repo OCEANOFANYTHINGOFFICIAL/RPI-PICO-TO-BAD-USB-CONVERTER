@@ -16,7 +16,7 @@
 
 <br />
 
-## Install
+# Install
 
 Install and have your USB Rubber Ducky working in less than 5 minutes.
 1. Clone This Ripo Or Download Zip By Clicking [Here](https://github.com/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER/archive/refs/heads/main.zip) And Unzip It
@@ -24,14 +24,17 @@ Install and have your USB Rubber Ducky working in less than 5 minutes.
 2. Download [CircuitPython for the Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/).  And Rename It To `firmware.uf2` And Paste It Into Cloned/Unzipped Repo Folder With Replacing The Previous One
 3. Run The `Run.bat` File
 4. And Thats It .
-### Setup Mode
+
+# Modes
+
+## Setup Mode
 
 To edit the payload, enter setup mode by connecting the pin 1 (`GP0`) to pin 3 (`GND`), this will stop the pico-ducky from injecting the payload in your own machine.
 The easiest way to so is by using a jumper wire between those pins as seen bellow.
 
 ![Setup mode with a jumper](images/setup-mode.png)
 
-### USB enable/disable mode
+## USB enable/disable mode
 
 If you need the pico-ducky to not show up as a USB mass storage device for stealth, follow these instructions.  
 Enter setup mode.  
@@ -42,16 +45,18 @@ The default mode is USB mass storage enabled.
 
 ![USB enable/disable mode](images/usb-boot-mode.png)
 
-### Usage
+# Usage
 
 There Is A File Named `payload.dd` In Your `Raspberry Pi Pico ` After Configuring That Into Bad USB. You Can Edit That File And Write Your Payload Script Code In That. You Also Dont Need To Compile Or Encode To Use The Original Code. You Can Actually Run That Directly !
+
+## Run Multiple Payloads
 
 > ProTip!
 > 
 > You Can Run Different Payloads By Configuring One Time !
 
 It Means You Can Save Multiple Payload Files And Can Run That. You Can't Run Different Payloads Or All Payloads At One Time. Please Read The Limitations
-#### limitations To Run Multiple Payloads
+## limitations To Run Multiple Payloads
 
  - You Can Save Four Different Payloads 
  - Only Four Different Payloads
@@ -65,29 +70,30 @@ It Means You Can Save Multiple Payload Files And Can Run That. You Can't Run Dif
 >  - payload4 = GPIO11 to GND
 - To Run Each Script, Press And Hold The Payload's Coresponding Button And Then Insert The `Bad USB` Into Victim's PC
 
-### Changing Keyboard Layouts
+# Changing Keyboard Layouts
 
 Copied from [Neradoc/Circuitpython_Keyboard_Layouts](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/blob/main/PICODUCKY.md)  
 
-#### How to use one of these layouts with the pico-ducky repository.
+## How to use one of these layouts with the pico-ducky repository.
 
 **Go to the [latest release page](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/releases/latest), look if your language is in the list.**
+## language/layout Bundle
 
-#### If your language/layout is in the bundle
+### If your language/layout is in the bundle
 
 Download the `py` zip, named `circuitpython-keyboard-layouts-py-XXXXXXXX.zip`
 
 **NOTE: You can use the mpy version targetting the version of Circuitpython that is on the device, but on Raspberry Pi Pico you don't need it - they only reduce file size and memory use on load, which the pico has plenty of.**
 
-#### If your language/layout is not in the bundle
+### If your language/layout is not in the bundle
 
 Try the online generator, it should get you a zip file with the bundles for yout language
 
 https://www.neradoc.me/layouts/
 
-#### Now you have a zip file
+## Now you have a zip file
 
-#### Find your language/layout in the lib directory
+### Find your language/layout in the lib directory
 
 For a language `LANG`, copy the following files from the zip's `lib` folder to the `lib` directory of the board.  
 **DO NOT** modify the adafruit_hid directory. Your files go directly in `lib`.  
@@ -103,7 +109,7 @@ This is what it should look like **if your language is French for example**.
 
 ![CIRCUITPY drive screenshot](https://github.com/Neradoc/Circuitpython_Keyboard_Layouts/raw/main/docs/drive_pico_ducky.png)
 
-#### Modify the pico-ducky code to use your language file:
+## Modify the pico-ducky code to use your language file:
 
 At the start of the file comment out these lines:
 
@@ -119,9 +125,7 @@ from keyboard_layout_win_LANG import KeyboardLayout
 from keycode_win_LANG import Keycode
 ```
 
-## Useful links and resources
-
-### Docs
+# Other Docs
 
 [CircuitPython](https://circuitpython.readthedocs.io/en/6.3.x/README.html)
 
@@ -141,10 +145,31 @@ from keycode_win_LANG import Keycode
  9. No Longer Need To Use `Autorun.inf` File
  10. Bug aAnd Lag Fix ( Over Heating, LED Not Blinking, USB Not Recognizing) 
 
-## Use ***`i2c OLED Display`***  Display
+
+# Download
+
+Download All Versions of `RPI-PICO-TO-BAD-USB-CONVERTER` From Here
+
+
+## Latest Release
+
+* [![v2.0.0.0](https://img.shields.io/badge/Version-2.0.0.0-red?style=flat-square)](https://github.com/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER/releases/tag/v2.0.0.0)
+
+## All Releases
+
+### Version 1
+* [![v1.0.0.0](https://img.shields.io/badge/Version-1.0.0.0-blue?style=flat-square)](https://github.com/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER/releases/tag/v1.0.0.0)
+
+* [![v1.0.0.1](https://img.shields.io/badge/Version-1.0.0.1-blue?style=flat-square)](https://github.com/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER/releases/tag/v1.0.0.1)
+
+### Version 2
+* [![v2.0.0.0](https://img.shields.io/badge/Version-2.0.0.0-red?style=flat-square)](https://github.com/OCEANOFANYTHINGOFFICIAL/RPI-PICO-TO-BAD-USB-CONVERTER/releases/tag/v2.0.0.0)
+
+
+# Use ***`i2c OLED Display`***  Display
 In This New Update You Can Use A ***`i2c OLED Display`*** With The ***`Raspberry Pi Pico`***. This Will Show Cpu Temperature Of Pico, Payload Name And Time Spend To Run The Script On The Display. Overall This Is Not A Very Big Feature But It Looks Cool, So Try To Use It
 
-### Display Types
+## Display Types
 There are 2 types of OLED displays Available In The Market, The `SSD1306` and the `SH1106`.
 
 ![SSD1306 And SH1106 Display](images/ssd1306_sh1106_display.jpg)
@@ -163,23 +188,25 @@ But We Need Only ***`I2C`***. Not The ~~***SPI***~~
 
 ![I2C Display](images/i2c_display.jpg)
 
-### Connections
+## Connections
 |Display| GPIO |
 |--|--|
 | GND | GND |
 | VCC/VDD | VCC / 3.3V |
 | SCL/CLK/SCK | GP 21 |
 | SDA | GP 20 |
-### Drawbacks
+## Drawbacks
 This `Display` Feature Has Also Some Drawbacks.
 
  1. The Size Of Code Is Increased
  2.  More Libraries Are Included, For That The Size Of The `lib` File Is Increased
  3. More Power Consumption
  
- ### This Feature Is Optional
+ ## Is It Necessary To Use The `Display` Feature?
  If You Don't Have A Display Or You Don't Want To Use a Display With Your Raspberry Pi Pico, Then Don't Use. This Is Not Necessary And Completely Optional Step.
  
+## What To Do When You Don't Have A Display
+
  You Can Run This Project Without Using A Display. To Do So, You Have To Follow The Steps Bellow Or Don't Do Anything. The Display Code Will Be SkIpped Automatically . But If You Want A Smaller Code The Just Follow These Steps:
  
  1. First You Can Delete Unused Libraries Form The `lib` Folder. You Can Delete `adafruit_displayio_ssd1306.mpy` File And  `adafruit_display_text` Folder. These Folder And File Contains Display Libs That Is Used to Run The Display Code. Example Given In The Image Bellow:
@@ -191,9 +218,10 @@ This `Display` Feature Has Also Some Drawbacks.
 ![v1.0.0.1](images/v1.0.0.1.png)
 
 3. Do Nothing. Yah! You Heard It Right. Do Noting, You Dont Have To Delete, Change And Install Anything. The Code Will Automatically Handle The Process. If You Are A Noob, Oops Sorry! If You Are Not An Advance User, This Step Is Perfect For You. Just Take A Shot And Enjoy Your Life .
+
 # Creator
 ## This Project Is Officially Created, Hosted And Maintained By Nakshatra Ranjan Saha (OCEAN OF ANYTHING).
 
-If You Want To Contact Me Then Use 
-## Email : [oceanofanything@gmail.com](mailto:oceanofanything@gmail.com)
-## Phone: [+91 8902 1094 55](tel:+918902109455)
+# Contact Me
+## Email :  [oceanofanything@gmail.com](mailto:oceanofanything@gmail.com)
+## Phone :  [+91 8902 1094 55](tel:+918902109455)
