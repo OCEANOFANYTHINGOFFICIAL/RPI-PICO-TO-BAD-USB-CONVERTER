@@ -24,6 +24,7 @@ Install and have your USB Rubber Ducky working in less than 5 minutes.
 2. Download [CircuitPython for the Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/).  And Rename It To `firmware.uf2` And Paste It Into Cloned/Unzipped Repo Folder With Replacing The Previous One
 3. Run The `Run.bat` File
 4. And Thats It .
+
 ### Setup Mode
 
 To edit the payload, enter setup mode by connecting the pin 1 (`GP0`) to pin 3 (`GND`), this will stop the pico-ducky from injecting the payload in your own machine.
